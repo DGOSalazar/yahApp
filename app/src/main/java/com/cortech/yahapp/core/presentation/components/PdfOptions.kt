@@ -4,7 +4,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.cortech.yahapp.R
 import com.cortech.yahapp.features.home.model.PdfOption
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -19,7 +21,7 @@ fun PdfOptions(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Text(
-            text = "¿Qué deseas hacer con este CV?",
+            text = stringResource(id = R.string.application),
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSurface
         )

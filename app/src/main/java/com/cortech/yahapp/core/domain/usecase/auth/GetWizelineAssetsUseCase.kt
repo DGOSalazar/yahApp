@@ -1,4 +1,4 @@
-package com.cortech.yahapp.features.splash.domain.usecase
+package com.cortech.yahapp.core.domain.usecase.auth
 
 import com.cortech.yahapp.core.data.repository.WizelineRepository
 import com.cortech.yahapp.core.domain.model.SplashModel

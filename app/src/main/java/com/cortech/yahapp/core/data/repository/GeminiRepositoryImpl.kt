@@ -2,6 +2,7 @@ package com.cortech.yahapp.core.data.repository
 
 import com.cortech.yahapp.BuildConfig
 import com.cortech.yahapp.core.domain.repository.GeminiRepository
+import com.cortech.yahapp.core.utils.Constants
 import com.google.ai.client.generativeai.GenerativeModel
 import javax.inject.Inject
 

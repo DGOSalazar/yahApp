@@ -6,6 +6,13 @@
   <h3>Modern Android Job Search Platform with AI Integration</h3>
 </div>
 
+## Downloads 📥
+
+You can download the latest version of YahApp from our [Releases](https://github.com/DGOSalazar/yahApp/releases) page. Each release includes:
+- Debug APK for testing
+- Release notes with changes and improvements
+- Automatic builds via GitHub Actions
+
 ## Overview 📱
 
 YahApp is a comprehensive Android application designed to revolutionize the job search experience by leveraging modern technologies and AI capabilities. Built with Clean Architecture principles and the latest Android development practices.

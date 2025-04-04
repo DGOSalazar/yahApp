@@ -104,7 +104,8 @@ dependencies {
     implementation(libs.generativeai)
 
     // PDF
-    implementation(libs.pdfbox)
+    implementation(libs.itext.kernel)
+    implementation(libs.itext.io)
 
     // Permissions
     implementation(libs.accompanist.permissions)

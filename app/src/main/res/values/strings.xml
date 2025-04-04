@@ -24,4 +24,12 @@
     <string name="employee">Employee</string>
     <string name="type">Type</string>
     <string name="application">application/pdf</string>
+    <string name="review_cv">Review CV</string>
+    <string name="be_helped">Be helped by the AI to analyze your CV</string>
+    <string name="upload_cv">Upload CV</string>
+    <string name="upload_description">Upload your cv for others can see it</string>
+    <string name="what_to_do">What do you like to do with this Summary?</string>
+    <string name="client">Client</string>
+    <string name="interview_type">Interview Type:</string>
+    <string name="skills">Skills</string>
 </resources>

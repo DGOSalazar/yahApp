@@ -11,13 +11,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.cortech.yahapp.core.domain.model.auth.CandidateModel
+import com.cortech.yahapp.R
+import com.cortech.yahapp.core.data.model.jobs.JobPosition
 
 @Composable
-fun CandidateProfile(
-    candidateModel: CandidateModel = CandidateModel()
+fun RoleDescription(
+    jobPosition: JobPosition = JobPosition()
 ) {
     Box(
         Modifier
@@ -26,29 +28,29 @@ fun CandidateProfile(
             .padding(horizontal = 12.dp, vertical = 8.dp)) {
         Column(Modifier.padding(8.dp)) {
             Text(
-                text = "${candidateModel.name}, ${candidateModel.position}",
+                text = jobPosition.jobTitle,
                 color = Color.White,
                 style = MaterialTheme.typography.titleMedium
             )
             Spacer(modifier = Modifier.padding(8.dp))
-            Text(candidateModel.summary, color = Color.White)
+            Text(jobPosition.description, color = Color.White)
             Spacer(modifier = Modifier.padding(8.dp))
-            Text("Location: ${candidateModel.location}", color = Color.White)
+            Text("${stringResource(id = R.string.client)}: ${jobPosition.client}", color = Color.White)
             Spacer(modifier = Modifier.padding(8.dp))
-            Text("Salary: ${candidateModel.salary}", color = Color.White)
+            Text("${stringResource(id = R.string.interview_type)} ${jobPosition.typeOfInterview}", color = Color.White)
             Spacer(modifier = Modifier.padding(8.dp))
             Text(
-                text = "Skills",
+                text = stringResource(id = R.string.skills),
                 color = Color.White,
                 style = MaterialTheme.typography.titleMedium
             )
-            SplitLazyColumns(candidateModel.skills)
+            SplitLazyColumns(jobPosition.skillsRequired)
         }
     }
 }
 
 @Preview
 @Composable
-fun CandidateProfilePreview() {
-    CandidateProfile()
+fun RoleDescriptionPreview() {
+    RoleDescription()
 }

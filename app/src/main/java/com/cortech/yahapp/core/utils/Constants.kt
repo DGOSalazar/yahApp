@@ -1,6 +1,21 @@
-package com.cortech.yahapp.core.util
+package com.cortech.yahapp.core.utils
 
 object Constants {
+    object PdfAnalysis {
+        const val ERROR_ANALYZING = "Error analyzing PDF: %s"
+        const val ERROR_READING = "Could not read PDF file"
+        const val PROMPT = """You are an experienced HR professional and career advisor. Please analyze the following resume and provide specific recommendations for improvement. Focus on:
+            1. Key technologies or certifications they should acquire to enhance their profile
+            2. Suggestions to better highlight their achievements
+            3. Modern skills that would complement their experience
+            4. CV format and presentation improvements
+            
+            Keep your response concise and actionable. Use a professional yet encouraging tone. Provide the response in English.
+            
+            Resume content:"""
+        const val PROMPT_CV_HEADER = "\nResume:"
+    }
+    
     const val UNKNOWN_ERROR = "Unknown error"
     const val UNKNOWN_FILE = "Unknown File"
     const val LOGIN_REQUIRED = "Please log in first"
@@ -13,7 +28,11 @@ object Constants {
         }
         
         object Home {
+            const val JOB_PUBLICATION_SUCCESS = "Job position published successfully!"
+            const val JOB_PUBLICATION_DETAILS = "The candidates can found this position when they search:"
+            const val SEND_NEW_VACANCY = "Do you want to send a new vacancy?"
             const val FILE_ERROR = "Error to select file: %s"
+            const val PERMISSION_DENIED = "Permission to read files was denied. Cannot analyze PDF without permission."
             const val WELCOME_MESSAGE = "Welcome to YahApp!, What can i help you with, %s?"
             const val FIND_COMMAND = "/find"
             const val JOB_COMMAND = "/job"
@@ -22,7 +41,7 @@ object Constants {
             const val JOB_DETAILS_REQUIRED = "Please provide job details after /job"
             const val POST_JOB_ERROR = "Failed to post job position"
             const val JOB_DETAILS_PARSE_ERROR = "Error parsing job details: %s"
-            const val NO_VACANCIES_MESSAGE = "Lo siento, no encontré vacantes que coincidan con tu búsqueda. ¿Podrías proporcionar más detalles sobre el tipo de trabajo que buscas?"
+            const val NO_VACANCIES_MESSAGE = "I'm sorry i can't found any vacancies that match with your criteria."
             const val SEARCH_POSITIONS_ERROR = "Failed to search for positions"
             const val ANALYZE_CV_ERROR = "Failed to analyze CV"
             const val CONTEXT_ERROR = "Context not available"
@@ -31,23 +50,24 @@ object Constants {
             const val NO_EMPLOYEES_FOUND = "No employees found matching your criteria."
             
             object JobListing {
-                const val VACANCIES_FOUND = "¡Encontré las siguientes vacantes que podrían interesarte! 🎯"
+                const val VACANCIES_FOUND = "Hey I found something good for you! 🎯"
                 const val POSITION_FORMAT = "%d. %s - %s"
                 const val DESCRIPTION_PREFIX = "   📝 "
-                const val SKILLS_HEADER = "   🔧 Habilidades requeridas:"
-                const val SKILL_FORMAT = "      - %s (%d años)"
-                const val INTERVIEW_TYPE = "   🎯 Tipo de entrevista: %s"
-                const val MORE_DETAILS = "¿Te gustaría saber más detalles sobre alguna de estas posiciones?"
+                const val SKILLS_HEADER = "   🔧 Required skills :"
+                const val SKILL_FORMAT = "      - %s (%d years)"
+                const val INTERVIEW_TYPE = "   🎯 Interview type: %s"
+                const val MORE_DETAILS = "Do you want to know more about this position?"
+                const val ONLY_HUMAN_RESOURCES = "Only human resources can post job positions"
             }
             
             object CvUpload {
-                const val SUCCESS_MESSAGE = "¡Listo! Tu CV se ha subido correctamente a la nube. 🎉"
-                const val RECRUITER_ACCESS = "Ahora los reclutadores podrán acceder a tu información profesional. ¿Hay algo más en lo que pueda ayudarte?"
-                const val HELP_OPTIONS_HEADER = "Puedes preguntarme sobre:"
-                const val HELP_CV = "- Consejos para mejorar tu CV"
-                const val HELP_INTERVIEW = "- Cómo prepararte para entrevistas"
-                const val HELP_TRENDS = "- Tendencias del mercado laboral"
-                const val HELP_OTHER = "O cualquier otra cosa que necesites"
+                const val SUCCESS_MESSAGE = "¡Done! Your summary is on the cloud, good luck!. 🎉"
+                const val RECRUITER_ACCESS = "Now all the recruiters can see your CV. Is there anything else I can help you with?"
+                const val HELP_OPTIONS_HEADER = "You can ask for:"
+                const val HELP_CV = "- How to improve my CV"
+                const val HELP_INTERVIEW = "- How to prepare for an interview"
+                const val HELP_TRENDS = "- Working trends"
+                const val HELP_OTHER = "Or whatever you want to ask me to found a job!"
             }
             
             object EmployeeListing {

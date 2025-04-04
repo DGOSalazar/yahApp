@@ -1,6 +1,6 @@
 package com.cortech.yahapp.core.data.repository
 
-import com.cortech.yahapp.core.data.model.auth.JobPosition
+import com.cortech.yahapp.core.data.model.jobs.JobPosition
 import com.cortech.yahapp.core.domain.repository.jobs.JobsRepository
 import javax.inject.Inject
 

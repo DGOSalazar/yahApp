@@ -11,8 +11,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.cortech.yahapp.R
 import com.cortech.yahapp.core.domain.model.auth.PdfAction
 import com.cortech.yahapp.core.presentation.components.BouncingDotsLoader
 import com.cortech.yahapp.core.presentation.components.ChatAnswerText
@@ -28,8 +30,7 @@ import com.cortech.yahapp.features.home.viewmodel.HomeViewModel
 fun HomeContent(
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = hiltViewModel(),
-    onAttachmentClick: () -> Unit = {},
-    content: @Composable () -> Unit
+    onAttachmentClick: () -> Unit = {}
 ) {
     val state by viewModel.state.collectAsState()
     val listState = rememberLazyListState()
@@ -46,7 +47,6 @@ fun HomeContent(
                 .fillMaxSize()
                 .background(color = Color.White)
         ) {
-            // PDF Message en la parte superior
             state.selectedPdfName?.let { fileName ->
                 PdfMessage(
                     fileName = fileName,
@@ -64,7 +64,7 @@ fun HomeContent(
             ) {
                 items(
                     items = state.messages,
-                    key = { message -> message.id } // Usar el ID como clave única
+                    key = { message -> message.id }
                 ) { message ->
                     if (message.isUserMessage) {
                         ChatQuestionText(text = message.text)
@@ -87,13 +87,13 @@ fun HomeContent(
                     options = listOf(
                         PdfOption(
                             action = PdfAction.ANALYZE,
-                            title = "Analizar CV",
-                            description = "Utiliza IA para analizar el contenido del CV y obtener insights"
+                            title = stringResource(id = R.string.review_cv),
+                            description = stringResource(id = R.string.be_helped)
                         ),
                         PdfOption(
                             action = PdfAction.UPLOAD,
-                            title = "Subir CV",
-                            description = "Sube el CV a la plataforma para que otros puedan verlo"
+                            title = stringResource(id = R.string.upload_cv),
+                            description = stringResource(id = R.string.upload_description)
                         )
                     ),
                     onOptionSelected = { option ->

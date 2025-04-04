@@ -19,10 +19,15 @@ import androidx.navigation.NavHostController
 import com.cortech.yahapp.R
 import com.cortech.yahapp.core.domain.model.chat.HomeActions
 import com.cortech.yahapp.core.navigation.NavigationConstants.Route
+import com.cortech.yahapp.core.utils.Constants
+
 import com.cortech.yahapp.features.home.screen.component.HomeContent
 import com.cortech.yahapp.features.home.screen.component.HomeTitle
 import com.cortech.yahapp.features.home.model.state.HomeEvent
 import com.cortech.yahapp.features.home.viewmodel.HomeViewModel
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 
 @Composable
 fun HomeScreen(
@@ -66,8 +71,7 @@ fun HomeScreen(
                 .fillMaxSize()
                 .padding(paddingValues),
             onAttachmentClick = actions.onAttachmentClick
-        ) {
-        }
+        )
     }
 }
 

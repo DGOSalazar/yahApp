@@ -26,6 +26,7 @@ import com.cortech.yahapp.R
 import com.cortech.yahapp.core.navigation.NavigationConstants.Route
 import com.cortech.yahapp.core.presentation.components.AppTitle
 import com.cortech.yahapp.core.presentation.components.AvatarSelector
+import com.cortech.yahapp.core.utils.Constants
 import com.cortech.yahapp.features.register.model.RegisterEvent
 import com.cortech.yahapp.features.register.viewmodel.RegisterViewModel
 import java.util.*

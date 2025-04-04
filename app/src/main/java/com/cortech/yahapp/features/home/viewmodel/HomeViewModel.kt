@@ -7,8 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.cortech.yahapp.core.data.local.UserPreferences
 import com.cortech.yahapp.core.data.model.auth.ChatMessage
 import com.cortech.yahapp.core.data.model.auth.EmployeeResponse
-import com.cortech.yahapp.core.data.model.auth.JobPosition
-import com.cortech.yahapp.core.data.model.auth.Skill
+import com.cortech.yahapp.core.data.model.jobs.JobPosition
 import com.cortech.yahapp.core.domain.model.auth.PdfAction
 import com.cortech.yahapp.core.domain.usecase.AnalyzePdfUseCase
 import com.cortech.yahapp.core.domain.usecase.UploadCvUseCase
@@ -16,6 +15,7 @@ import com.cortech.yahapp.core.domain.usecase.chat.GenerateResponseUseCase
 import com.cortech.yahapp.core.domain.usecase.jobs.FindEmployeesUseCase
 import com.cortech.yahapp.core.domain.usecase.jobs.GetRecommendedPositionsUseCase
 import com.cortech.yahapp.core.domain.usecase.jobs.PostJobPositionUseCase
+import com.cortech.yahapp.core.utils.Constants
 import com.cortech.yahapp.features.home.model.state.HomeEvent
 import com.cortech.yahapp.features.home.model.state.HomeState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -85,7 +85,7 @@ class HomeViewModel @Inject constructor(
     private suspend fun handleFindCommand(message: String) {
         val userData = userPreferences.getUserData()
         if (userData == null) {
-            handleError("Please log in first")
+            handleError(Constants.LOGIN_REQUIRED)
             return
         }
 
@@ -131,7 +131,7 @@ class HomeViewModel @Inject constructor(
     private suspend fun handleJobCommand(message: String) {
         val userData = userPreferences.getUserData()
         if (userData == null) {
-            handleError("Please log in first")
+            handleError(Constants.LOGIN_REQUIRED)
             return
         }
 
@@ -149,13 +149,13 @@ class HomeViewModel @Inject constructor(
                         messages = it.messages + ChatMessage(
                             text =
                             """
-                            ¡Vacante publicada exitosamente! 🎉
+                            ${Constants.Features.Home.JOB_PUBLICATION_SUCCESS}
                             
-                            Los candidatos podrán encontrar esta posición cuando busquen:
+                            ${Constants.Features.Home.JOB_PUBLICATION_DETAILS}
                             - ${position.jobTitle}
-                            - ${position.skillsRequired.joinToString { it.name }}
+                            - ${position.skillsRequired.joinToString { skill -> skill }}
                             
-                            ¿Necesitas publicar otra vacante?
+                            ${Constants.Features.Home.SEND_NEW_VACANCY}
                             """.trimIndent(),
                             isUserMessage = false
                         ),
@@ -173,7 +173,7 @@ class HomeViewModel @Inject constructor(
     private suspend fun handleJobSearch(message: String) {
         val userData = userPreferences.getUserData()
         if (userData == null) {
-            handleError("Please log in first")
+            handleError(Constants.LOGIN_REQUIRED)
             return
         }
 
@@ -199,7 +199,7 @@ class HomeViewModel @Inject constructor(
         return JobPosition(
             jobTitle = "Software Developer",
             client = "Tech Corp",
-            skillsRequired = listOf(Skill("Java", 3)),
+            skillsRequired = listOf("Java"),
             description = details,
             typeOfInterview = "Technical"
         )
@@ -207,19 +207,19 @@ class HomeViewModel @Inject constructor(
 
     private fun formatJobPositions(positions: List<JobPosition>): String {
         return buildString {
-            appendLine("¡Encontré las siguientes vacantes que podrían interesarte! 🎯")
+            appendLine(Constants.Features.Home.JobListing.VACANCIES_FOUND.format(positions.size))
             appendLine()
             positions.forEachIndexed { index, position ->
                 appendLine("${index + 1}. ${position.jobTitle} - ${position.client}")
                 appendLine("   📝 ${position.description}")
-                appendLine("   🔧 Habilidades requeridas:")
+                appendLine(Constants.Features.Home.JobListing.SKILLS_HEADER)
                 position.skillsRequired.forEach { skill ->
-                    appendLine("      - ${skill.name} (${skill.years} años)")
+                    appendLine("      - $skill")
                 }
-                appendLine("   🎯 Tipo de entrevista: ${position.typeOfInterview}")
+                appendLine("   ${Constants.Features.Home.JobListing.INTERVIEW_TYPE} ${position.typeOfInterview}")
                 appendLine()
             }
-            appendLine("¿Te gustaría saber más detalles sobre alguna de estas posiciones?")
+            appendLine(Constants.Features.Home.JobListing.MORE_DETAILS)
         }
     }
 

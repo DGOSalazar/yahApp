@@ -1,4 +1,4 @@
-package com.cortech.yahapp.features.register.domain.usecase
+package com.cortech.yahapp.core.domain.usecase.auth
 
 import com.cortech.yahapp.core.data.local.UserPreferences
 import com.cortech.yahapp.core.data.model.auth.UserRegistrationRequest

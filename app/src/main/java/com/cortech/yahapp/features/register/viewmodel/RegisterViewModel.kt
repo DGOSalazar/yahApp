@@ -12,8 +12,8 @@ import com.cortech.yahapp.core.domain.model.auth.UserData
 import com.cortech.yahapp.core.utils.ImageUtils
 import com.cortech.yahapp.core.domain.model.auth.UserRegistration
 import com.cortech.yahapp.core.domain.model.auth.UserType
-import com.cortech.yahapp.core.domain.usecase.LoginUserUseCase
-import com.cortech.yahapp.features.register.domain.usecase.RegisterUserUseCase
+import com.cortech.yahapp.core.domain.usecase.auth.LoginUserUseCase
+import com.cortech.yahapp.core.domain.usecase.auth.RegisterUserUseCase
 import com.cortech.yahapp.features.register.model.RegisterEvent
 import com.cortech.yahapp.features.register.model.RegisterState
 import dagger.hilt.android.lifecycle.HiltViewModel

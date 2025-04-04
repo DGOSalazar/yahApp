@@ -1,4 +1,4 @@
-package com.cortech.yahapp.core.domain.usecase
+package com.cortech.yahapp.core.domain.usecase.auth
 
 import com.cortech.yahapp.core.data.local.UserPreferences
 import com.cortech.yahapp.core.data.repository.WizelineRepository
