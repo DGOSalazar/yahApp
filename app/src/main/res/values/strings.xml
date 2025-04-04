@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">yahApp</string>
+    
+    <!-- Chat Components -->
+    <string name="attach_file_description">Attach File</string>
+    <string name="send_message_hint">Send a message…</string>
+    <string name="send_message_description">Send Message</string>
+    <string name="copy_text_description">Copy text</string>
+    <string name="text_copied_toast">Text copied to clipboard</string>
+    <string name="like_description">Like message</string>
+    <string name="dislike_description">Dislike message</string>
+</resources>
