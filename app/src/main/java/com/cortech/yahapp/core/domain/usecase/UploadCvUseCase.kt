@@ -1,8 +1,8 @@
-package com.cortech.yahapp.core.domain.usecase.auth
+package com.cortech.yahapp.core.domain.usecase
 
 import android.content.Context
 import android.net.Uri
-import com.cortech.yahapp.core.domain.repository.HomeRepository
+import com.cortech.yahapp.core.domain.repository.chat.HomeRepository
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody

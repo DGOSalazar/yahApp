@@ -1,11 +1,8 @@
-package com.cortech.yahapp.core.data.repository.auth
+package com.cortech.yahapp.core.data.repository
 
 import com.cortech.yahapp.BuildConfig
-import com.cortech.yahapp.core.domain.model.Experience
-import com.cortech.yahapp.core.domain.model.Resume
 import com.cortech.yahapp.core.domain.repository.GeminiRepository
 import com.google.ai.client.generativeai.GenerativeModel
-import com.google.gson.Gson
 import javax.inject.Inject
 
 class GeminiRepositoryImpl @Inject constructor() : GeminiRepository {

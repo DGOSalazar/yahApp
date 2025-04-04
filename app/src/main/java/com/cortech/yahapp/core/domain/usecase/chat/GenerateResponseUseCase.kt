@@ -1,4 +1,4 @@
-package com.cortech.yahapp.core.domain.usecase.auth
+package com.cortech.yahapp.core.domain.usecase.chat
 
 import com.cortech.yahapp.core.domain.repository.GeminiRepository
 import javax.inject.Inject

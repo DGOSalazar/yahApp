@@ -1,4 +1,4 @@
-package com.cortech.yahapp.features.profile.presentation.view.component
+package com.cortech.yahapp.features.profile.view.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -13,7 +13,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.cortech.yahapp.core.presentation.components.AvatarProfile
 import com.cortech.yahapp.core.presentation.components.ListTextWithLabel
 import com.cortech.yahapp.core.util.toComposeBitmap
-import com.cortech.yahapp.features.profile.presentation.viewmodel.ProfileViewModel
+import com.cortech.yahapp.features.profile.viewmodel.ProfileViewModel
 
 @Composable
 fun ProfileContent(

@@ -1,8 +1,8 @@
-package com.cortech.yahapp.core.data.repository.auth
+package com.cortech.yahapp.core.data.repository.jobs
 
-import com.cortech.yahapp.core.data.api.JobsApi
-import com.cortech.yahapp.core.data.model.JobPosition
-import com.cortech.yahapp.core.domain.repository.JobsRepository
+import com.cortech.yahapp.core.data.api.jobs.JobsApi
+import com.cortech.yahapp.core.data.model.auth.JobPosition
+import com.cortech.yahapp.core.domain.repository.jobs.JobsRepository
 import javax.inject.Inject
 
 class JobsRepositoryImpl @Inject constructor(

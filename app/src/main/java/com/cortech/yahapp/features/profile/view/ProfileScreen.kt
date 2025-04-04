@@ -1,4 +1,4 @@
-package com.cortech.yahapp.features.profile.presentation.view
+package com.cortech.yahapp.features.profile.view
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -11,9 +11,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.cortech.yahapp.features.profile.presentation.view.component.ProfileContent
-import com.cortech.yahapp.features.profile.presentation.view.component.ProfileTitle
-import com.cortech.yahapp.features.profile.presentation.viewmodel.ProfileViewModel
+import com.cortech.yahapp.features.profile.view.component.ProfileContent
+import com.cortech.yahapp.features.profile.view.component.ProfileTitle
+import com.cortech.yahapp.features.profile.viewmodel.ProfileViewModel
 
 @Composable
 fun ProfileScreen(

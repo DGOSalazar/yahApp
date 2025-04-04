@@ -1,6 +1,7 @@
-package com.cortech.yahapp.core.domain.repository.auth
+package com.cortech.yahapp.core.domain.repository.jobs
 
-import com.cortech.yahapp.core.data.model.JobPosition
+import com.cortech.yahapp.core.data.model.auth.JobPosition
+
 
 interface JobsRepository {
     suspend fun postJobPosition(position: JobPosition): Result<Unit>

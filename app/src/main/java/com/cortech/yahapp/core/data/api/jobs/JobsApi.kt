@@ -1,6 +1,6 @@
-package com.cortech.yahapp.core.data.api.auth
+package com.cortech.yahapp.core.data.api.jobs
 
-import com.cortech.yahapp.core.data.model.JobPosition
+import com.cortech.yahapp.core.data.model.auth.JobPosition
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST

@@ -1,11 +1,11 @@
 package com.cortech.yahapp.features.register.domain.usecase
 
 import com.cortech.yahapp.core.data.local.UserPreferences
-import com.cortech.yahapp.core.data.model.UserRegistrationRequest
+import com.cortech.yahapp.core.data.model.auth.UserRegistrationRequest
 import com.cortech.yahapp.core.data.repository.WizelineRepository
-import com.cortech.yahapp.core.domain.model.UserData
-import com.cortech.yahapp.core.domain.model.UserType
-import com.cortech.yahapp.features.register.domain.model.UserRegistration
+import com.cortech.yahapp.core.domain.model.auth.UserData
+import com.cortech.yahapp.core.domain.model.auth.UserRegistration
+import com.cortech.yahapp.core.domain.model.auth.UserType
 import javax.inject.Inject
 
 class RegisterUserUseCase @Inject constructor(

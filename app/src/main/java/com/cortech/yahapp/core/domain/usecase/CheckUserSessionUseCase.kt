@@ -1,4 +1,4 @@
-package com.cortech.yahapp.features.splash.domain.usecase
+package com.cortech.yahapp.core.domain.usecase
 
 import com.cortech.yahapp.core.data.local.UserPreferences
 import javax.inject.Inject

@@ -8,11 +8,11 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cortech.yahapp.core.data.local.UserPreferences
-import com.cortech.yahapp.core.domain.model.UserData
-import com.cortech.yahapp.core.domain.model.UserType
+import com.cortech.yahapp.core.domain.model.auth.UserData
 import com.cortech.yahapp.core.utils.ImageUtils
-import com.cortech.yahapp.features.register.domain.model.UserRegistration
-import com.cortech.yahapp.features.register.domain.usecase.LoginUserUseCase
+import com.cortech.yahapp.core.domain.model.auth.UserRegistration
+import com.cortech.yahapp.core.domain.model.auth.UserType
+import com.cortech.yahapp.core.domain.usecase.LoginUserUseCase
 import com.cortech.yahapp.features.register.domain.usecase.RegisterUserUseCase
 import com.cortech.yahapp.features.register.model.RegisterEvent
 import com.cortech.yahapp.features.register.model.RegisterState

@@ -1,6 +1,7 @@
-package com.cortech.yahapp.core.domain.repository.auth
+package com.cortech.yahapp.core.domain.repository.profile
 
-import com.cortech.yahapp.core.data.model.UserProfile
+import com.cortech.yahapp.core.data.model.auth.UserProfile
+
 
 interface ProfileRepository {
     suspend fun getUserProfile(name: String): Result<UserProfile>

@@ -1,4 +1,4 @@
-package com.cortech.yahapp.features.home.presentation.screen
+package com.cortech.yahapp.features.home.screen
 
 import android.content.Context
 import android.content.Intent
@@ -15,12 +15,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.cortech.yahapp.core.domain.model.chat.HomeActions
 import com.cortech.yahapp.core.navigation.NavigationConstants.Route
-import com.cortech.yahapp.core.domain.model.HomeActions
-import com.cortech.yahapp.features.home.presentation.screen.component.HomeContent
-import com.cortech.yahapp.features.home.presentation.screen.component.HomeTitle
-import com.cortech.yahapp.features.home.presentation.model.state.HomeEvent
-import com.cortech.yahapp.features.home.presentation.viewmodel.HomeViewModel
+import com.cortech.yahapp.features.home.screen.component.HomeContent
+import com.cortech.yahapp.features.home.screen.component.HomeTitle
+import com.cortech.yahapp.features.home.model.state.HomeEvent
+import com.cortech.yahapp.features.home.viewmodel.HomeViewModel
 
 @Composable
 fun HomeScreen(

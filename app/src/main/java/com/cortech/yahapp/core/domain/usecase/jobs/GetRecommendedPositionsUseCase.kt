@@ -1,7 +1,7 @@
-package com.cortech.yahapp.core.domain.usecase.auth
+package com.cortech.yahapp.core.domain.usecase.jobs
 
-import com.cortech.yahapp.core.data.model.JobPosition
-import com.cortech.yahapp.core.domain.repository.JobsRepository
+import com.cortech.yahapp.core.data.model.auth.JobPosition
+import com.cortech.yahapp.core.domain.repository.jobs.JobsRepository
 import javax.inject.Inject
 
 class GetRecommendedPositionsUseCase @Inject constructor(

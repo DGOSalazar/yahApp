@@ -1,4 +1,4 @@
-package com.cortech.yahapp.features.register.domain.model
+package com.cortech.yahapp.core.domain.model.auth
 
 data class UserRegistration(
     val name: String,

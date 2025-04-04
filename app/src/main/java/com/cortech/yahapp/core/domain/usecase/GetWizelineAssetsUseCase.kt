@@ -1,7 +1,7 @@
 package com.cortech.yahapp.features.splash.domain.usecase
 
 import com.cortech.yahapp.core.data.repository.WizelineRepository
-import com.cortech.yahapp.features.splash.domain.model.SplashModel
+import com.cortech.yahapp.core.domain.model.SplashModel
 import javax.inject.Inject
 
 class GetWizelineAssetsUseCase @Inject constructor(

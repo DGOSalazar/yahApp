@@ -1,4 +1,4 @@
-package com.cortech.yahapp.features.home.presentation.screen.component
+package com.cortech.yahapp.features.home.screen.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

@@ -2,7 +2,7 @@ package com.cortech.yahapp.features.splash.di
 
 import com.cortech.yahapp.core.data.local.UserPreferences
 import com.cortech.yahapp.core.data.repository.WizelineRepository
-import com.cortech.yahapp.features.splash.domain.usecase.CheckUserSessionUseCase
+import com.cortech.yahapp.core.domain.usecase.CheckUserSessionUseCase
 import com.cortech.yahapp.features.splash.domain.usecase.GetWizelineAssetsUseCase
 import dagger.Module
 import dagger.Provides

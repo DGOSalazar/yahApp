@@ -1,6 +1,7 @@
-package com.cortech.yahapp.features.profile.presentation.model
+package com.cortech.yahapp.features.profile.model
 
-import com.cortech.yahapp.core.data.model.UserProfile
+import com.cortech.yahapp.core.data.model.auth.UserProfile
+
 
 data class ProfileState(
     val isLoading: Boolean = true,

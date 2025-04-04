@@ -1,9 +1,9 @@
-package com.cortech.yahapp.core.data.repository.auth
+package com.cortech.yahapp.core.data.repository.chat
 
-import com.cortech.yahapp.core.data.api.HomeApi
-import com.cortech.yahapp.core.data.model.EmployeeResponse
-import com.cortech.yahapp.core.data.model.FindEmployeesRequest
-import com.cortech.yahapp.core.domain.repository.HomeRepository
+import com.cortech.yahapp.core.data.api.chat.HomeApi
+import com.cortech.yahapp.core.data.model.auth.EmployeeResponse
+import com.cortech.yahapp.core.data.model.auth.FindEmployeesRequest
+import com.cortech.yahapp.core.domain.repository.chat.HomeRepository
 import okhttp3.MultipartBody
 import javax.inject.Inject
 

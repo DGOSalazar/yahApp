@@ -5,7 +5,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.cortech.yahapp.features.home.presentation.model.PdfOption
+import com.cortech.yahapp.features.home.model.PdfOption
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

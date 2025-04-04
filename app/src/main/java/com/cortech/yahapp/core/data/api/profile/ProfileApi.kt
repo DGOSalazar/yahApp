@@ -1,6 +1,6 @@
-package com.cortech.yahapp.core.data.api.auth
+package com.cortech.yahapp.core.data.api.profile
 
-import com.cortech.yahapp.core.data.model.UserProfile
+import com.cortech.yahapp.core.data.model.auth.UserProfile
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -1,4 +1,4 @@
-package com.cortech.yahapp.features.home.presentation.screen.component
+package com.cortech.yahapp.features.home.screen.component
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.background
@@ -13,17 +13,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.cortech.yahapp.core.domain.model.auth.PdfAction
 import com.cortech.yahapp.core.presentation.components.BouncingDotsLoader
 import com.cortech.yahapp.core.presentation.components.ChatAnswerText
 import com.cortech.yahapp.core.presentation.components.ChatInputField
 import com.cortech.yahapp.core.presentation.components.ChatQuestionText
-import com.cortech.yahapp.core.domain.model.PdfAction
 import com.cortech.yahapp.core.presentation.components.PdfMessage
 import com.cortech.yahapp.core.presentation.components.PdfOptions
-import com.cortech.yahapp.core.presentation.components.TypingText
-import com.cortech.yahapp.features.home.presentation.model.PdfOption
-import com.cortech.yahapp.features.home.presentation.model.state.HomeEvent
-import com.cortech.yahapp.features.home.presentation.viewmodel.HomeViewModel
+import com.cortech.yahapp.features.home.model.PdfOption
+import com.cortech.yahapp.features.home.model.state.HomeEvent
+import com.cortech.yahapp.features.home.viewmodel.HomeViewModel
 
 @Composable
 fun HomeContent(

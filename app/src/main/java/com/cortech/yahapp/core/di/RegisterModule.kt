@@ -2,7 +2,7 @@ package com.cortech.yahapp.features.register.di
 
 import com.cortech.yahapp.core.data.local.UserPreferences
 import com.cortech.yahapp.core.data.repository.WizelineRepository
-import com.cortech.yahapp.features.register.domain.usecase.LoginUserUseCase
+import com.cortech.yahapp.core.domain.usecase.LoginUserUseCase
 import com.cortech.yahapp.features.register.domain.usecase.RegisterUserUseCase
 import dagger.Module
 import dagger.Provides

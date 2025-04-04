@@ -1,8 +1,7 @@
 package com.cortech.yahapp.core.di
 
-import com.cortech.yahapp.core.data.api.HomeApi
-import com.cortech.yahapp.core.data.repository.HomeRepositoryImpl
-import com.cortech.yahapp.core.domain.repository.HomeRepository
+import com.cortech.yahapp.core.data.api.chat.HomeApi
+import com.cortech.yahapp.core.data.repository.chat.HomeRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +21,7 @@ object HomeModule {
     
     @Provides
     @Singleton
-    fun provideHomeRepository(api: HomeApi): HomeRepository {
-        return HomeRepositoryImpl(api)
+    fun provideHomeRepository(): com.cortech.yahapp.core.domain.repository.chat.HomeRepository {
+        return com.cortech.yahapp.core.data.repository.HomeRepositoryImpl()
     }
 }

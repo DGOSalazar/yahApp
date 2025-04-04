@@ -5,8 +5,8 @@ import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
-import com.cortech.yahapp.core.domain.model.UserData
-import com.cortech.yahapp.core.domain.model.UserType
+import com.cortech.yahapp.core.domain.model.auth.UserData
+import com.cortech.yahapp.core.domain.model.auth.UserType
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.ByteArrayOutputStream
 import javax.inject.Inject

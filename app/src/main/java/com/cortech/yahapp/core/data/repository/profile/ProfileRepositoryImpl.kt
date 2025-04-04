@@ -1,8 +1,8 @@
-package com.cortech.yahapp.core.data.repository.auth
+package com.cortech.yahapp.core.data.repository.profile
 
-import com.cortech.yahapp.core.data.api.ProfileApi
-import com.cortech.yahapp.core.data.model.UserProfile
-import com.cortech.yahapp.core.domain.repository.ProfileRepository
+import com.cortech.yahapp.core.data.api.profile.ProfileApi
+import com.cortech.yahapp.core.data.model.auth.UserProfile
+import com.cortech.yahapp.core.domain.repository.profile.ProfileRepository
 import javax.inject.Inject
 
 class ProfileRepositoryImpl @Inject constructor(

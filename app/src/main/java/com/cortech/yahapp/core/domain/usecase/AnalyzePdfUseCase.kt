@@ -1,8 +1,8 @@
-package com.cortech.yahapp.core.domain.usecase.auth
+package com.cortech.yahapp.core.domain.usecase
 
 import android.content.Context
 import android.net.Uri
-import com.cortech.yahapp.core.domain.repository.HomeRepository
+import com.cortech.yahapp.core.domain.usecase.chat.GenerateResponseUseCase
 import org.apache.pdfbox.pdmodel.PDDocument
 import org.apache.pdfbox.text.PDFTextStripper
 import javax.inject.Inject

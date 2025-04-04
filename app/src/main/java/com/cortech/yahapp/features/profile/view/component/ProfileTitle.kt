@@ -1,4 +1,4 @@
-package com.cortech.yahapp.features.profile.presentation.view.component
+package com.cortech.yahapp.features.profile.view.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row

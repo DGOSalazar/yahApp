@@ -1,7 +1,7 @@
-package com.cortech.yahapp.core.data.api.auth
+package com.cortech.yahapp.core.data.api
 
-import com.cortech.yahapp.core.data.model.UserRegistrationRequest
-import com.cortech.yahapp.core.data.model.UserResponse
+import com.cortech.yahapp.core.data.model.auth.UserRegistrationRequest
+import com.cortech.yahapp.core.data.model.auth.UserResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET

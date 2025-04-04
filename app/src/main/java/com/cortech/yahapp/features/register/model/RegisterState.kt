@@ -1,6 +1,6 @@
 package com.cortech.yahapp.features.register.model
 
-import com.cortech.yahapp.core.domain.model.UserType
+import com.cortech.yahapp.core.domain.model.auth.UserType
 
 data class RegisterState(
     val isLoginMode: Boolean = false,

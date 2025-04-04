@@ -1,6 +1,6 @@
 package com.cortech.yahapp.features.splash.model
 
-import com.cortech.yahapp.features.splash.domain.model.SplashModel
+import com.cortech.yahapp.core.domain.model.SplashModel
 
 data class SplashState(
     val isLoading: Boolean = true,

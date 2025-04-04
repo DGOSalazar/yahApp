@@ -1,10 +1,9 @@
-package com.cortech.yahapp.features.profile.presentation.viewmodel
+package com.cortech.yahapp.features.profile.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cortech.yahapp.core.domain.usecase.GetUserProfileUseCase
-import com.cortech.yahapp.features.profile.presentation.model.ProfileEvent
-import com.cortech.yahapp.features.profile.presentation.model.ProfileState
+import com.cortech.yahapp.core.domain.usecase.profile.GetUserProfileUseCase
+import com.cortech.yahapp.features.profile.model.ProfileState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

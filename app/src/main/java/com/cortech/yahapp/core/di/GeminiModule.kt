@@ -2,7 +2,7 @@ package com.cortech.yahapp.core.di
 
 import com.cortech.yahapp.core.data.repository.GeminiRepositoryImpl
 import com.cortech.yahapp.core.domain.repository.GeminiRepository
-import com.cortech.yahapp.core.domain.usecase.GenerateResponseUseCase
+import com.cortech.yahapp.core.domain.usecase.chat.GenerateResponseUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

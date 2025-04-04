@@ -1,7 +1,7 @@
-package com.cortech.yahapp.core.data.api.auth
+package com.cortech.yahapp.core.data.api.chat
 
-import com.cortech.yahapp.core.data.model.EmployeeResponse
-import com.cortech.yahapp.core.data.model.FindEmployeesRequest
+import com.cortech.yahapp.core.data.model.auth.EmployeeResponse
+import com.cortech.yahapp.core.data.model.auth.FindEmployeesRequest
 import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*

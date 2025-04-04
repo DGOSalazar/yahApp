@@ -1,8 +1,8 @@
-package com.cortech.yahapp.core.domain.usecase.auth
+package com.cortech.yahapp.core.domain.usecase.jobs
 
-import com.cortech.yahapp.core.domain.model.UserType
-import com.cortech.yahapp.core.data.model.EmployeeResponse
-import com.cortech.yahapp.core.domain.repository.HomeRepository
+import com.cortech.yahapp.core.data.model.auth.EmployeeResponse
+import com.cortech.yahapp.core.domain.model.auth.UserType
+import com.cortech.yahapp.core.domain.repository.chat.HomeRepository
 import javax.inject.Inject
 
 class FindEmployeesUseCase @Inject constructor(

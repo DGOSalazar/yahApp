@@ -1,8 +1,7 @@
 package com.cortech.yahapp.core.di
 
-import com.cortech.yahapp.core.data.api.JobsApi
-import com.cortech.yahapp.core.data.repository.JobsRepositoryImpl
-import com.cortech.yahapp.core.domain.repository.JobsRepository
+import com.cortech.yahapp.core.data.api.jobs.JobsApi
+import com.cortech.yahapp.core.data.repository.jobs.JobsRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +21,7 @@ object JobsModule {
     
     @Provides
     @Singleton
-    fun provideJobsRepository(api: JobsApi): JobsRepository {
-        return JobsRepositoryImpl(api)
+    fun provideJobsRepository(): com.cortech.yahapp.core.domain.repository.jobs.JobsRepository {
+        return com.cortech.yahapp.core.data.repository.JobsRepositoryImpl()
     }
 }

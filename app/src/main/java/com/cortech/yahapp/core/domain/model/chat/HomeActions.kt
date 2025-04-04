@@ -1,4 +1,4 @@
-package com.cortech.yahapp.core.domain.model.auth
+package com.cortech.yahapp.core.domain.model.chat
 
 data class HomeActions(
     val onSend: (String) -> Unit = {},

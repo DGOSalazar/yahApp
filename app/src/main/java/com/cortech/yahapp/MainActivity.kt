@@ -15,8 +15,8 @@ import com.cortech.yahapp.core.navigation.animatedComposable
 import com.cortech.yahapp.core.presentation.components.theme.YahAppTheme
 import com.cortech.yahapp.features.splash.view.SplashScreen
 import com.cortech.yahapp.features.register.view.RegisterScreen
-import com.cortech.yahapp.features.home.presentation.screen.HomeScreen
-import com.cortech.yahapp.features.profile.presentation.view.ProfileScreen
+import com.cortech.yahapp.features.home.screen.HomeScreen
+import com.cortech.yahapp.features.profile.view.ProfileScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

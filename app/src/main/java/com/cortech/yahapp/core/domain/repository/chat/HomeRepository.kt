@@ -1,6 +1,6 @@
-package com.cortech.yahapp.core.domain.repository.auth
+package com.cortech.yahapp.core.domain.repository.chat
 
-import com.cortech.yahapp.core.data.model.EmployeeResponse
+import com.cortech.yahapp.core.data.model.auth.EmployeeResponse
 import okhttp3.MultipartBody
 
 interface HomeRepository {

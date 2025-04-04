@@ -1,8 +1,8 @@
-package com.cortech.yahapp.core.domain.usecase.auth
+package com.cortech.yahapp.core.domain.usecase.profile
 
 import com.cortech.yahapp.core.data.local.UserPreferences
-import com.cortech.yahapp.core.data.model.UserProfile
-import com.cortech.yahapp.core.domain.repository.ProfileRepository
+import com.cortech.yahapp.core.data.model.auth.UserProfile
+import com.cortech.yahapp.core.domain.repository.profile.ProfileRepository
 import javax.inject.Inject
 
 class GetUserProfileUseCase @Inject constructor(
@@ -11,9 +11,7 @@ class GetUserProfileUseCase @Inject constructor(
 ) {
     suspend operator fun invoke(): Result<UserProfile> {
         val userData = userPreferences.getUserData()
-        if (userData == null) {
-            return Result.failure(Exception("User not logged in"))
-        }
+            ?: return Result.failure(Exception("User not logged in"))
         return repository.getUserProfile(userData.name)
     }
 }

@@ -1,8 +1,8 @@
-package com.cortech.yahapp.core.data.repository.auth
+package com.cortech.yahapp.core.data.repository
 
 import com.cortech.yahapp.core.data.api.WizelineApi
-import com.cortech.yahapp.core.data.model.UserRegistrationRequest
-import com.cortech.yahapp.core.data.model.UserResponse
+import com.cortech.yahapp.core.data.model.auth.UserRegistrationRequest
+import com.cortech.yahapp.core.data.model.auth.UserResponse
 import javax.inject.Inject
 import javax.inject.Singleton
 
