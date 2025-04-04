@@ -9,8 +9,8 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface WizelineApi {
-    @GET("users/")
-    suspend fun getUserByName(@Query("name") name: String): Response<UserResponse>
+    @GET(Constants.Api.USERS_ENDPOINT)
+    suspend fun getUserByName(@Query(Constants.Api.USERS_QUERY_PARAM) name: String): Response<UserResponse>
 
     @POST("users")
     suspend fun registerUser(@Body request: UserRegistrationRequest): Response<UserResponse>

@@ -46,7 +46,7 @@ class SplashViewModel @Inject constructor(
                     isLoading = false,
                     error = e.message
                 )
-                _event.value = SplashEvent.ShowError(e.message ?: "Unknown error")
+                _event.value = SplashEvent.ShowError(e.message ?: Constants.UNKNOWN_ERROR)
             }
         }
     }

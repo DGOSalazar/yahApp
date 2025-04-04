@@ -6,7 +6,6 @@ import javax.inject.Inject
 
 class ProfileRepositoryImpl @Inject constructor() : ProfileRepository {
     override suspend fun getUserProfile(name: String): Result<UserProfile> {
-        // TODO: Implement API call
-        return Result.success(UserProfile("", "", "", "", "", ""))
+        return Result.success(UserProfile(name = name, lastname = "", birthdate = "", password = "", description = "", image = ""))
     }
 }

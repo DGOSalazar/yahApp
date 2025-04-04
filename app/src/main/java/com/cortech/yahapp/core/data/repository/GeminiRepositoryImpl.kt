@@ -7,12 +7,12 @@ import javax.inject.Inject
 
 class GeminiRepositoryImpl @Inject constructor() : GeminiRepository {
     private val model = GenerativeModel(
-        modelName = "gemini-2.0-flash",
+        modelName = Constants.GEMINI_MODEL_NAME,
         apiKey = BuildConfig.GEMINI_API_KEY
     )
 
     override suspend fun generateResponse(prompt: String): Result<String> = runCatching {
         val response = model.generateContent(prompt)
-        response.text ?: throw IllegalStateException("Empty response from Gemini")
+        response.text ?: throw IllegalStateException(Constants.EMPTY_RESPONSE_ERROR)
     }
 }

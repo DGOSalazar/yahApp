@@ -14,10 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.cortech.yahapp.R
 import com.cortech.yahapp.core.navigation.NavigationConstants.Route
 import com.cortech.yahapp.core.presentation.components.AppTitle
 import com.cortech.yahapp.core.presentation.components.LogoWizeline
@@ -99,7 +101,7 @@ fun SplashScreen(
             },
             confirmButton = {},
             text = { 
-                Text(text = "Algo salió mal, intenta de nuevo más tarde.")
+                Text(text = stringResource(id = R.string.error_message))
             }
         )
     }

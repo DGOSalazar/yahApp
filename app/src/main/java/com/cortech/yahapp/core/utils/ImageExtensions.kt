@@ -1,4 +1,4 @@
-package com.cortech.yahapp.core.util
+package com.cortech.yahapp.core.utils
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

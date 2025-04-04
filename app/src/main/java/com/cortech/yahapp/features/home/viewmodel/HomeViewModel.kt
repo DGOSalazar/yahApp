@@ -44,7 +44,7 @@ class HomeViewModel @Inject constructor(
     init {
         val userData = userPreferences.getUserData()
         val userMessage = ChatMessage(
-            text = "Welcome to YahApp!,  What can i help you with, ${userData?.name} ?",
+            text = Constants.Features.Home.WELCOME_MESSAGE.format(userData?.name),
             isUserMessage = false
         )
         _state.update { it.copy(
@@ -74,7 +74,7 @@ class HomeViewModel @Inject constructor(
                 isLoading = true
             )}
 
-            if (message.startsWith("/find")) {
+            if (message.startsWith(Constants.Features.Home.FIND_COMMAND)) {
                 handleFindCommand(message)
             } else {
                 handleGeneralMessage(message)
@@ -99,12 +99,12 @@ class HomeViewModel @Inject constructor(
                 )}
             }
             .onFailure { error ->
-                handleError(error.message ?: "Failed to find employees")
+                handleError(error.message ?: Constants.Features.Home.FIND_EMPLOYEES_ERROR)
             }
     }
 
     private suspend fun handleGeneralMessage(message: String) {
-        if (message.startsWith("/job")) {
+        if (message.startsWith(Constants.Features.Home.JOB_COMMAND)) {
             handleJobCommand(message)
             return
         }
@@ -124,7 +124,7 @@ class HomeViewModel @Inject constructor(
                 )}
             }
             .onFailure { error ->
-                handleError(error.message ?: "Failed to generate response")
+                handleError(error.message ?: Constants.Features.Home.GENERATE_RESPONSE_ERROR)
             }
     }
 
@@ -135,9 +135,9 @@ class HomeViewModel @Inject constructor(
             return
         }
 
-        val jobDetails = message.removePrefix("/job").trim()
+        val jobDetails = message.removePrefix(Constants.Features.Home.JOB_COMMAND).trim()
         if (jobDetails.isBlank()) {
-            handleError("Please provide job details after /job")
+            handleError(Constants.Features.Home.JOB_DETAILS_REQUIRED)
             return
         }
 
@@ -163,10 +163,10 @@ class HomeViewModel @Inject constructor(
                     )}
                 }
                 .onFailure { error ->
-                    handleError(error.message ?: "Failed to post job position")
+                    handleError(error.message ?: Constants.Features.Home.POST_JOB_ERROR)
                 }
         } catch (e: Exception) {
-            handleError("Error parsing job details: ${e.message}")
+            handleError(Constants.Features.Home.JOB_DETAILS_PARSE_ERROR.format(e.message))
         }
     }
 
@@ -180,7 +180,7 @@ class HomeViewModel @Inject constructor(
         getRecommendedPositionsUseCase(message)
             .onSuccess { positions ->
                 val response = if (positions.isEmpty()) {
-                    "Lo siento, no encontré vacantes que coincidan con tu búsqueda. ¿Podrías proporcionar más detalles sobre el tipo de trabajo que buscas?"
+                    Constants.Features.Home.NO_VACANCIES_MESSAGE
                 } else {
                     formatJobPositions(positions)
                 }
@@ -191,7 +191,7 @@ class HomeViewModel @Inject constructor(
                 )}
             }
             .onFailure { error ->
-                handleError(error.message ?: "Failed to search for positions")
+                handleError(error.message ?: Constants.Features.Home.SEARCH_POSITIONS_ERROR)
             }
     }
 
@@ -258,7 +258,7 @@ class HomeViewModel @Inject constructor(
                 )}
             }
             .onFailure { error ->
-                handleError(error.message ?: "Failed to analyze CV")
+                handleError(error.message ?: Constants.Features.Home.ANALYZE_CV_ERROR)
             }
     }
 
@@ -266,28 +266,28 @@ class HomeViewModel @Inject constructor(
         try {
             val userData = userPreferences.getUserData()
             if (userData == null) {
-                handleError("Please log in first")
+                handleError(Constants.LOGIN_REQUIRED)
                 return
             }
 
             val currentContext = _state.value.context
             if (currentContext == null) {
-                handleError("Context not available")
+                handleError(Constants.Features.Home.CONTEXT_ERROR)
                 return
             }
 
             uploadCvUseCase(currentContext, uri, userData.name)
                 .onSuccess {
                     val successMessage = buildString {
-                        appendLine("¡Listo! Tu CV se ha subido correctamente a la nube. 🎉")
+                        appendLine(Constants.Features.Home.CvUpload.SUCCESS_MESSAGE)
                         appendLine()
-                        appendLine("Ahora los reclutadores podrán acceder a tu información profesional. ¿Hay algo más en lo que pueda ayudarte?")
+                        appendLine(Constants.Features.Home.CvUpload.RECRUITER_ACCESS)
                         appendLine()
-                        appendLine("Puedes preguntarme sobre:")
-                        appendLine("- Consejos para mejorar tu CV")
-                        appendLine("- Cómo prepararte para entrevistas")
-                        appendLine("- Tendencias del mercado laboral")
-                        append("O cualquier otra cosa que necesites")
+                        appendLine(Constants.Features.Home.CvUpload.HELP_OPTIONS_HEADER)
+                        appendLine(Constants.Features.Home.CvUpload.HELP_CV)
+                        appendLine(Constants.Features.Home.CvUpload.HELP_INTERVIEW)
+                        appendLine(Constants.Features.Home.CvUpload.HELP_TRENDS)
+                        append(Constants.Features.Home.CvUpload.HELP_OTHER)
                     }
                     
                     _state.update { it.copy(
@@ -296,10 +296,10 @@ class HomeViewModel @Inject constructor(
                     )}
                 }
                 .onFailure { error ->
-                    handleError(error.message ?: "Failed to upload CV")
+                    handleError(error.message ?: Constants.Features.Home.UPLOAD_CV_ERROR)
                 }
         } catch (e: Exception) {
-            handleError("Error unexpected: ${e.message}")
+            handleError(Constants.Features.Home.UNEXPECTED_ERROR.format(e.message))
         }
     }
 
@@ -317,17 +317,17 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun formatEmployeeResponse(employees: List<EmployeeResponse>): String {
-        if (employees.isEmpty()) return "No employees found matching your criteria."
+        if (employees.isEmpty()) return Constants.Features.Home.NO_EMPLOYEES_FOUND
 
         return buildString {
-            appendLine("Found ${employees.size} matching employees:")
+            appendLine(Constants.Features.Home.EmployeeListing.EMPLOYEES_FOUND.format(employees.size))
             appendLine()
             employees.forEachIndexed { index, employee ->
-                appendLine("${index + 1}. ${employee.name} ${employee.lastname}")
-                appendLine("   Birth: ${employee.birthdate}")
-                appendLine("   Description: ${employee.description}")
+                appendLine(Constants.Features.Home.EmployeeListing.EMPLOYEE_FORMAT.format(index + 1, employee.name, employee.lastname))
+                appendLine(Constants.Features.Home.EmployeeListing.BIRTH_FORMAT.format(employee.birthdate))
+                appendLine(Constants.Features.Home.EmployeeListing.DESCRIPTION_FORMAT.format(employee.description))
                 if (employee.skills.isNotEmpty()) {
-                    appendLine("   Skills: ${employee.skills.joinToString(", ")}")
+                    appendLine(Constants.Features.Home.EmployeeListing.SKILLS_FORMAT.format(employee.skills.joinToString(", ")))
                 }
                 if (!employee.cvUrl.isNullOrEmpty()) {
                     appendLine("   CV: ${employee.cvUrl}")

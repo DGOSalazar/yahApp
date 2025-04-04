@@ -15,12 +15,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.cortech.yahapp.R
 import com.cortech.yahapp.core.navigation.NavigationConstants.Route
 import com.cortech.yahapp.core.presentation.components.AppTitle
 import com.cortech.yahapp.core.presentation.components.AvatarSelector
@@ -28,7 +30,6 @@ import com.cortech.yahapp.features.register.model.RegisterEvent
 import com.cortech.yahapp.features.register.viewmodel.RegisterViewModel
 import java.util.*
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RegisterScreen(
     navController: NavHostController,
@@ -65,7 +66,7 @@ fun RegisterScreen(
                             .height(80.dp)
                             .clip(RoundedCornerShape(8.dp)),
                         bitmap = it1,
-                        contentDescription = "Wizeline Logo"
+                        contentDescription = stringResource(id = R.string.wizeline_logo)
                     )
                 }
             }
@@ -73,13 +74,23 @@ fun RegisterScreen(
             FilterChip(
                 selected = state.isLoginMode,
                 onClick = { viewModel.onEvent(RegisterEvent.ToggleAuthMode) },
-                label = { Text(if (state.isLoginMode) "Login" else "Register") }
+                label = {
+                    Text(
+                        if (state.isLoginMode)
+                            stringResource(id = R.string.login)
+                        else stringResource(
+                            id = R.string.register
+                        )
+                    )
+                }
             )
 
             OutlinedTextField(
                 value = state.name,
                 onValueChange = { viewModel.onEvent(RegisterEvent.UpdateName(it)) },
-                label = { Text("Name") },
+                label = { Text(stringResource(
+                    id = R.string.name
+                )) },
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions(
                     imeAction = ImeAction.Next
@@ -90,7 +101,7 @@ fun RegisterScreen(
                 OutlinedTextField(
                     value = state.lastname,
                     onValueChange = { viewModel.onEvent(RegisterEvent.UpdateLastname(it)) },
-                    label = { Text("Last Name") },
+                    label = { Text(stringResource(id = R.string.last_name)) },
                     modifier = Modifier.fillMaxWidth(),
                     keyboardOptions = KeyboardOptions(
                         imeAction = ImeAction.Next
@@ -100,7 +111,7 @@ fun RegisterScreen(
                 OutlinedTextField(
                     value = state.birthdate,
                     onValueChange = { },
-                    label = { Text("Birthdate") },
+                    label = { Text(stringResource(id = R.string.birthdate)) },
                     modifier = Modifier.fillMaxWidth(),
                     readOnly = true,
                     trailingIcon = {
@@ -111,7 +122,7 @@ fun RegisterScreen(
                                 { _: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
                                     viewModel.onEvent(
                                         RegisterEvent.UpdateBirthdate(
-                                            String.format("%d-%02d-%02d", year, month + 1, dayOfMonth)
+                                            String.format(Constants.Features.Register.DATE_FORMAT, year, month + 1, dayOfMonth)
                                         )
                                     )
                                 },
@@ -120,7 +131,7 @@ fun RegisterScreen(
                                 calendar.get(Calendar.DAY_OF_MONTH)
                             ).show()
                         }) {
-                            Text("📅")
+                            Text(Constants.Features.Register.CALENDAR_EMOJI)
                         }
                     }
                 )
@@ -128,7 +139,7 @@ fun RegisterScreen(
                 OutlinedTextField(
                     value = state.description,
                     onValueChange = { viewModel.onEvent(RegisterEvent.UpdateDescription(it)) },
-                    label = { Text("Description") },
+                    label = { Text(stringResource(id = R.string.description)) },
                     modifier = Modifier.fillMaxWidth(),
                     keyboardOptions = KeyboardOptions(
                         imeAction = ImeAction.Next
@@ -139,7 +150,7 @@ fun RegisterScreen(
             OutlinedTextField(
                 value = state.password,
                 onValueChange = { viewModel.onEvent(RegisterEvent.UpdatePassword(it)) },
-                label = { Text("Password") },
+                label = { Text(stringResource(id = R.string.password)) },
                 modifier = Modifier.fillMaxWidth(),
                 visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(
@@ -158,7 +169,7 @@ fun RegisterScreen(
                 )
 
                 Text(
-                    text = "User type:",
+                    text = Constants.Features.Register.USER_TYPE_LABEL,
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.padding(top = 8.dp)
                 )
@@ -166,7 +177,15 @@ fun RegisterScreen(
                 FilterChip(
                     selected = state.isHumanResource,
                     onClick = { viewModel.onEvent(RegisterEvent.ToggleUserType) },
-                    label = { Text(if (state.isHumanResource) "RH" else "Employee") }
+                    label = {
+                        Text(
+                            if (state.isHumanResource)
+                                stringResource(id = R.string.rh)
+                            else stringResource(
+                                id = R.string.register
+                            )
+                        )
+                    }
                 )
             }
 
@@ -181,7 +200,9 @@ fun RegisterScreen(
                         color = MaterialTheme.colorScheme.onPrimary
                     )
                 } else {
-                    Text(if (state.isLoginMode) "Login" else "Register")
+                    Text(if (state.isLoginMode) stringResource(id = R.string.login) else stringResource(
+                        id = R.string.register
+                    ))
                 }
             }
 

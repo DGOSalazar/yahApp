@@ -9,4 +9,19 @@
     <string name="text_copied_toast">Text copied to clipboard</string>
     <string name="like_description">Like message</string>
     <string name="dislike_description">Dislike message</string>
+
+    <!-- Chat List -->
+    <string name="error_message">Something went wrong, please try again</string>
+    <string name="wizeline_logo">Wizeline Logo</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="birthdate">Birthdate</string>
+    <string name="description">Description</string>
+    <string name="password">Password</string>
+    <string name="rh">RH</string>
+    <string name="employee">Employee</string>
+    <string name="type">Type</string>
+    <string name="application">application/pdf</string>
 </resources>

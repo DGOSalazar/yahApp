@@ -13,8 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.cortech.yahapp.R
 import com.cortech.yahapp.core.domain.model.chat.HomeActions
 import com.cortech.yahapp.core.navigation.NavigationConstants.Route
 import com.cortech.yahapp.features.home.screen.component.HomeContent
@@ -28,6 +30,7 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
+    val type = stringResource(id = R.string.application)
     val filePickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.OpenDocument()
     ) { uri: Uri? ->
@@ -45,7 +48,7 @@ fun HomeScreen(
                 navController.navigate(Route.PROFILE)
             },
             onAttachmentClick = {
-                filePickerLauncher.launch(arrayOf("application/pdf"))
+                filePickerLauncher.launch(arrayOf(type))
             }
         )
     }
@@ -89,7 +92,7 @@ private fun processSelectedPdf(
             )
         )
     } catch (e: Exception) {
-        viewModel.onEvent(HomeEvent.ShowError("Erroral seleccionar el archivo: ${e.message}"))
+        viewModel.onEvent(HomeEvent.ShowError(Constants.Features.Home.FILE_ERROR.format(e.message)))
     }
 }
 
@@ -104,5 +107,5 @@ private fun getFileNameFromUri(context: Context, uri: Uri): String {
         val nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
         cursor.moveToFirst()
         cursor.getString(nameIndex)
-    } ?: "Documento PDF"
+    } ?: Constants.UNKNOWN_FILE
 }
