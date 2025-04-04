@@ -183,7 +183,7 @@ fun RegisterScreen(
                             if (state.isHumanResource)
                                 stringResource(id = R.string.rh)
                             else stringResource(
-                                id = R.string.register
+                                id = R.string.employee
                             )
                         )
                     }
