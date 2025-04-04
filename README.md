@@ -1,5 +1,7 @@
 # YahApp - Professional Job Search Platform 🚀
 
+[![Android CI/CD](https://github.com/DGOSalazar/yahApp/actions/workflows/android.yml/badge.svg)](https://github.com/DGOSalazar/yahApp/actions/workflows/android.yml)
+
 <div align="center">
   <img width="292" alt="image" src="https://github.com/user-attachments/assets/97af0d84-6a84-4e02-ae30-c6f01b9a574b" />
 
