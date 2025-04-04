@@ -1,7 +1,8 @@
 # YahApp - Professional Job Search Platform 🚀
 
 <div align="center">
-  <img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" alt="YahApp Logo" width="120"/>
+  <img width="292" alt="image" src="https://github.com/user-attachments/assets/97af0d84-6a84-4e02-ae30-c6f01b9a574b" />
+
   <h3>Modern Android Job Search Platform with AI Integration</h3>
 </div>
 
