@@ -5,7 +5,7 @@ import com.cortech.yahapp.core.data.model.auth.UserProfile
 
 data class ProfileState(
     val isLoading: Boolean = true,
-    val profile: UserProfile? = null,
+    val profile: UserProfile = UserProfile(),
     val error: String? = null,
 )
 

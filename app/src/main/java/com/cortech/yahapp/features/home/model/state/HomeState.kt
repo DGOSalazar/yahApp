@@ -2,7 +2,7 @@ package com.cortech.yahapp.features.home.model.state
 
 import android.content.Context
 import android.net.Uri
-import com.cortech.yahapp.core.data.model.auth.ChatMessage
+import com.cortech.yahapp.core.data.model.chat.ChatMessage
 import com.cortech.yahapp.features.home.model.PdfOption
 
 data class HomeState(

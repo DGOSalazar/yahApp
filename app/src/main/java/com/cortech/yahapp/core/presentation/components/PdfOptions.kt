@@ -21,7 +21,7 @@ fun PdfOptions(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Text(
-            text = stringResource(id = R.string.application),
+            text = stringResource(id = R.string.what_do_you_like),
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSurface
         )

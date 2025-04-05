@@ -24,6 +24,7 @@
     <string name="employee">Employee</string>
     <string name="type">Type</string>
     <string name="application">application/pdf</string>
+    <string name="what_do_you_like">What do you like to do?</string>
     <string name="review_cv">Review CV</string>
     <string name="be_helped">Be helped by the AI to analyze your CV</string>
     <string name="upload_cv">Upload CV</string>

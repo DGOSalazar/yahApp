@@ -2,11 +2,13 @@ package com.cortech.yahapp.features.home.viewmodel
 
 import android.content.Context
 import android.net.Uri
+import android.provider.OpenableColumns
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cortech.yahapp.core.data.local.UserPreferences
-import com.cortech.yahapp.core.data.model.auth.ChatMessage
+import com.cortech.yahapp.core.data.model.chat.ChatMessage
 import com.cortech.yahapp.core.data.model.auth.EmployeeResponse
+import com.cortech.yahapp.core.data.model.chat.model.ChatModelConfig
 import com.cortech.yahapp.core.data.model.jobs.JobPosition
 import com.cortech.yahapp.core.domain.model.auth.PdfAction
 import com.cortech.yahapp.core.domain.usecase.AnalyzePdfUseCase
@@ -16,6 +18,7 @@ import com.cortech.yahapp.core.domain.usecase.jobs.FindEmployeesUseCase
 import com.cortech.yahapp.core.domain.usecase.jobs.GetRecommendedPositionsUseCase
 import com.cortech.yahapp.core.domain.usecase.jobs.PostJobPositionUseCase
 import com.cortech.yahapp.core.utils.Constants
+import com.cortech.yahapp.features.home.model.MessageType
 import com.cortech.yahapp.features.home.model.state.HomeEvent
 import com.cortech.yahapp.features.home.model.state.HomeState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -45,7 +48,11 @@ class HomeViewModel @Inject constructor(
         val userData = userPreferences.getUserData()
         val userMessage = ChatMessage(
             text = Constants.Features.Home.WELCOME_MESSAGE.format(userData?.name),
-            isUserMessage = false
+            messageType = MessageType.Answer,
+            fileConfig = ChatModelConfig(
+                showCopyButton = false,
+                showLikeButton = false
+            )
         )
         _state.update { it.copy(
             userName = userData?.name ?: "",
@@ -68,7 +75,15 @@ class HomeViewModel @Inject constructor(
         if (message.isBlank()) return
 
         viewModelScope.launch {
-            val userMessage = ChatMessage(text = message, isUserMessage = true)
+            val userMessage = ChatMessage(
+                text = message,
+                messageType = MessageType.Question,
+                fileConfig = ChatModelConfig(
+                    showDislikeButton = false,
+                    showCopyButton = false,
+                    showLikeButton = false
+                )
+            )
             _state.update { it.copy(
                 messages = it.messages + userMessage,
                 isLoading = true
@@ -93,7 +108,7 @@ class HomeViewModel @Inject constructor(
             .onSuccess { employees ->
                 val response = formatEmployeeResponse(employees)
                 _state.update { it.copy(
-                    messages = it.messages + ChatMessage(text = response, isUserMessage = false),
+                    messages = it.messages + ChatMessage(text = response, messageType = MessageType.Answer),
                     isLoading = false,
                     isEmpty = false
                 )}
@@ -116,7 +131,7 @@ class HomeViewModel @Inject constructor(
 
         generateResponseUseCase(message)
             .onSuccess { response ->
-                val aiMessage = ChatMessage(text = response, isUserMessage = false)
+                val aiMessage = ChatMessage(text = response, messageType = MessageType.Answer)
                 _state.update { it.copy(
                     messages = it.messages + aiMessage,
                     isLoading = false,
@@ -157,7 +172,7 @@ class HomeViewModel @Inject constructor(
                             
                             ${Constants.Features.Home.SEND_NEW_VACANCY}
                             """.trimIndent(),
-                            isUserMessage = false
+                            messageType = MessageType.Answer
                         ),
                         isLoading = false
                     )}
@@ -186,7 +201,7 @@ class HomeViewModel @Inject constructor(
                 }
 
                 _state.update { it.copy(
-                    messages = it.messages + ChatMessage( text = response, isUserMessage = false),
+                    messages = it.messages + ChatMessage( text = response, messageType = MessageType.Answer),
                     isLoading = false
                 )}
             }
@@ -253,7 +268,9 @@ class HomeViewModel @Inject constructor(
         analyzePdfUseCase(requireNotNull(_state.value.context), uri)
             .onSuccess { analysis ->
                 _state.update { it.copy(
-                    messages = it.messages + ChatMessage(text = analysis, isUserMessage = false),
+                    messages = it.messages + ChatMessage(
+                        text = analysis, messageType = MessageType.Answer
+                    ),
                     isLoading = false
                 )}
             }
@@ -291,7 +308,17 @@ class HomeViewModel @Inject constructor(
                     }
                     
                     _state.update { it.copy(
-                        messages = it.messages + ChatMessage(text = successMessage, isUserMessage = false),
+                        messages = it.messages + ChatMessage(
+                                    text = "",
+                                    fileName = getFileNameFromUri(
+                                        currentContext,
+                                        uri
+                                    ),
+                                    messageType = MessageType.PDF
+                                ) + ChatMessage(
+                                     text = successMessage,
+                                     messageType = MessageType.Answer
+                                ),
                         isLoading = false
                     )}
                 }
@@ -335,5 +362,16 @@ class HomeViewModel @Inject constructor(
                 appendLine()
             }
         }
+    }
+
+    fun getFileNameFromUri(context: Context, uri: Uri): String? {
+        val returnCursor = context.contentResolver.query(uri, null, null, null, null)
+        returnCursor?.use {
+            val nameIndex = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+            if (it.moveToFirst()) {
+                return it.getString(nameIndex)
+            }
+        }
+        return null
     }
 }

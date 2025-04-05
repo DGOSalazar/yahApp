@@ -17,10 +17,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.cortech.yahapp.R
 import com.cortech.yahapp.core.domain.model.auth.PdfAction
 import com.cortech.yahapp.core.presentation.components.BouncingDotsLoader
-import com.cortech.yahapp.core.presentation.components.ChatAnswerText
 import com.cortech.yahapp.core.presentation.components.ChatInputField
-import com.cortech.yahapp.core.presentation.components.ChatQuestionText
-import com.cortech.yahapp.core.presentation.components.PdfMessage
 import com.cortech.yahapp.core.presentation.components.PdfOptions
 import com.cortech.yahapp.features.home.model.PdfOption
 import com.cortech.yahapp.features.home.model.state.HomeEvent
@@ -47,17 +44,9 @@ fun HomeContent(
                 .fillMaxSize()
                 .background(color = Color.White)
         ) {
-            state.selectedPdfName?.let { fileName ->
-                PdfMessage(
-                    fileName = fileName,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp)
-                )
-            }
-
             LazyColumn(
                 state = listState,
+                userScrollEnabled = true,
                 modifier = Modifier
                     .weight(1f)
                     .padding(horizontal = 8.dp, vertical = 16.dp)
@@ -66,15 +55,7 @@ fun HomeContent(
                     items = state.messages,
                     key = { message -> message.id }
                 ) { message ->
-                    if (message.isUserMessage) {
-                        ChatQuestionText(text = message.text)
-                    } else {
-                        ChatAnswerText(
-                            text = message.text,
-                            messageId = message.id,
-                            hideButtons = state.isEmpty || state.isLoading
-                        )
-                    }
+                    HomeLazyContent(message = message)
                 }
             }
 

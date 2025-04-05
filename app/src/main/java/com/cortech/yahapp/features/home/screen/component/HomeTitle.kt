@@ -1,68 +1,88 @@
 package com.cortech.yahapp.features.home.screen.component
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DarkMode
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.Composable
+import androidx.compose.material.icons.filled.LightMode
+import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.cortech.yahapp.core.presentation.components.AppTitleShort
+import com.cortech.yahapp.R
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeTitle(
+    modifier: Modifier = Modifier,
+    isDarkTheme: Boolean = false,
     onProfileClick: () -> Unit = {},
     onThemeToggle: () -> Unit = {}
 ) {
-
-    Row(
-        modifier = Modifier
+    Surface(
+        modifier = modifier
             .fillMaxWidth()
-            .height(56.dp)
-            .background(Color(0xFF2D2D2D)),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
+            .shadow(elevation = 4.dp),
+        color = MaterialTheme.colorScheme.surface,
+        tonalElevation = 3.dp
     ) {
-        IconButton(
-            modifier = Modifier,
-            onClick = onThemeToggle
-        ) {
-            Icon(
-                imageVector = Icons.Default.DarkMode,
-                contentDescription = "Switch to Dark Mode",
-                tint = MaterialTheme.colorScheme.onSurface
+        TopAppBar(
+            title = {
+                Text(
+                    text = "YaH!",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.primary
+                )
+            },
+            navigationIcon = {
+                IconButton(
+                    onClick = onThemeToggle
+                ) {
+                    Icon(
+                        imageVector = if (isDarkTheme) Icons.Default.LightMode else Icons.Default.DarkMode,
+                        contentDescription = "",
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            },
+            actions = {
+                IconButton(onClick = onProfileClick) {
+                    Icon(
+                        imageVector = Icons.Outlined.AccountCircle,
+                        contentDescription = "",
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(28.dp)
+                    )
+                }
+            },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.surface,
+                titleContentColor = MaterialTheme.colorScheme.onSurface,
             )
-        }
-
-        AppTitleShort(
-            modifier = Modifier.weight(2f)
         )
-
-        IconButton(
-            modifier = Modifier,
-            onClick = onProfileClick
-        ) {
-            Icon(
-                imageVector = Icons.Default.Person,
-                contentDescription = "User Profile",
-                tint = MaterialTheme.colorScheme.onSurface
-            )
-        }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun HomeTitlePreview() {
-    HomeTitle()
+    MaterialTheme {
+        HomeTitle()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun HomeTitleDarkPreview() {
+    MaterialTheme {
+        HomeTitle(isDarkTheme = true)
+    }
 }

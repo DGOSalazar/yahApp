@@ -31,24 +31,22 @@ fun ProfileContent(
         stringResource(id = R.string.description),
         stringResource(id = R.string.type)
     )
-    var listText: List<String>
-    with(state.profile) {
-         listText = listOf(
-             this?.name ?: "",
-             this?.lastname ?: "",
-             this?.birthdate ?: "",
-             this?.password ?: "",
-             this?.description ?: "",
-        )
-    }
+    val correctDate = state.profile.birthdate.split("T")
+    val listText = listOf(
+        state.profile.name,
+        state.profile.lastname,
+        correctDate[0],
+        state.profile.password,
+        state.profile.description
+    )
 
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.height(50.dp))
-        if (!state.profile?.image.isNullOrEmpty()) {
-            state.profile!!.image.toComposeBitmap()?.let { bitmap ->
+        if (!state.profile.image.isNullOrEmpty()) {
+            state.profile.image.toComposeBitmap()?.let { bitmap ->
                 AvatarProfile(
                     img = bitmap
                 )

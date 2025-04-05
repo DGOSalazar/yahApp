@@ -2,6 +2,7 @@ package com.cortech.yahapp.core.di
 
 import com.cortech.yahapp.core.data.api.profile.ProfileApi
 import com.cortech.yahapp.core.data.repository.profile.ProfileRepositoryImpl
+import com.cortech.yahapp.core.domain.repository.profile.ProfileRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +22,9 @@ object ProfileModule {
     
     @Provides
     @Singleton
-    fun provideProfileRepository(): com.cortech.yahapp.core.domain.repository.profile.ProfileRepository {
-        return com.cortech.yahapp.core.data.repository.ProfileRepositoryImpl()
+    fun provideProfileRepository(
+        api: ProfileApi
+    ): ProfileRepository {
+        return ProfileRepositoryImpl(api)
     }
 }
