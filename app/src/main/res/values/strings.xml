@@ -15,7 +15,6 @@
     <string name="wizeline_logo">Wizeline Logo</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
-    <string name="employee">Employee</string>
     <string name="name">Name</string>
     <string name="last_name">Last Name</string>
     <string name="birthdate">Birthdate</string>
@@ -33,4 +32,10 @@
     <string name="client">Client</string>
     <string name="interview_type">Interview Type:</string>
     <string name="skills">Skills</string>
+    <!-- PDF Improvement -->
+    <string name="improve_cv_title">Would you like me to improve your CV?</string>
+    <string name="improve_cv_accept">Yes, improve it</string>
+    <string name="improve_cv_decline">No, thanks</string>
+    <string name="improved_cv_ready">I\'ve created an improved version of your CV!</string>
+    <string name="upload_improved_cv">Would you like to upload it now?</string>
 </resources>

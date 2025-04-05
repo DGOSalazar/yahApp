@@ -106,7 +106,7 @@ dependencies {
     // PDF
     implementation(libs.itext.kernel)
     implementation(libs.itext.io)
-
+    implementation (libs.pdfbox.android)
     // Permissions
     implementation(libs.accompanist.permissions)
 
