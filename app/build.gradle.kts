@@ -104,9 +104,13 @@ dependencies {
     implementation(libs.generativeai)
 
     // PDF
-    implementation(libs.itext.kernel)
-    implementation(libs.itext.io)
-    implementation (libs.pdfbox.android)
+    implementation(libs.itext.kernel) {
+        exclude(group = "org.bouncycastle")
+    }
+    implementation(libs.itext.io) {
+        exclude(group = "org.bouncycastle")
+    }
+    implementation(libs.pdfbox.android)
     // Permissions
     implementation(libs.accompanist.permissions)
 
