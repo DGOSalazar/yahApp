@@ -11,12 +11,12 @@ import com.cortech.yahapp.core.data.model.auth.EmployeeResponse
 import com.cortech.yahapp.core.data.model.chat.model.ChatModelConfig
 import com.cortech.yahapp.core.data.model.jobs.JobPosition
 import com.cortech.yahapp.core.domain.model.auth.PdfAction
-import com.cortech.yahapp.core.domain.usecase.AnalyzePdfUseCase
-import com.cortech.yahapp.core.domain.usecase.UploadCvUseCase
+import com.cortech.yahapp.core.domain.usecase.chat.AnalyzePdfUseCase
+import com.cortech.yahapp.core.domain.usecase.chat.UploadCvUseCase
 import com.cortech.yahapp.core.domain.usecase.chat.GenerateResponseUseCase
-import com.cortech.yahapp.core.domain.usecase.jobs.FindEmployeesUseCase
-import com.cortech.yahapp.core.domain.usecase.jobs.GetRecommendedPositionsUseCase
-import com.cortech.yahapp.core.domain.usecase.jobs.PostJobPositionUseCase
+import com.cortech.yahapp.core.domain.usecase.chat.FindEmployeesUseCase
+import com.cortech.yahapp.core.domain.usecase.chat.GetRecommendedPositionsUseCase
+import com.cortech.yahapp.core.domain.usecase.chat.PostJobPositionUseCase
 import com.cortech.yahapp.core.utils.Constants
 import com.cortech.yahapp.features.home.model.MessageType
 import com.cortech.yahapp.features.home.model.state.HomeEvent
@@ -91,6 +91,8 @@ class HomeViewModel @Inject constructor(
 
             if (message.startsWith(Constants.Features.Home.FIND_COMMAND)) {
                 handleFindCommand(message)
+            } else if (message.startsWith(Constants.Features.Home.FILE_COMMAND)) {
+                handleFileCommand(message)
             } else {
                 handleGeneralMessage(message)
             }
@@ -183,6 +185,36 @@ class HomeViewModel @Inject constructor(
         } catch (e: Exception) {
             handleError(Constants.Features.Home.JOB_DETAILS_PARSE_ERROR.format(e.message))
         }
+    }
+
+    private suspend fun handleFileCommand(message: String) {
+        val query = message.removePrefix(Constants.Features.Home.FILE_COMMAND).trim()
+        if (query.isBlank()) {
+            handleError("Please provide a search term after /file")
+            return
+        }
+
+        // Actualizar estado a cargando
+        _state.update { it.copy(isLoading = true) }
+
+        generateResponseUseCase("Please provide information about $query from the Android Developer documentation. Focus on practical implementation details and best practices.")
+            .onSuccess { response ->
+                _state.update { it.copy(
+                    messages = it.messages + ChatMessage(
+                        text = response,
+                        messageType = MessageType.Answer,
+                        fileConfig = ChatModelConfig(
+                            showCopyButton = true,
+                            showLikeButton = true
+                        )
+                    ),
+                    isLoading = false,
+                    isEmpty = false
+                )}
+            }
+            .onFailure { error ->
+                handleError(error.message ?: Constants.Features.Home.GENERATE_RESPONSE_ERROR)
+            }
     }
 
     private suspend fun handleJobSearch(message: String) {

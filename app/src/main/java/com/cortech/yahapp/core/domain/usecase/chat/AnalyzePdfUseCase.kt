@@ -1,8 +1,7 @@
-package com.cortech.yahapp.core.domain.usecase
+package com.cortech.yahapp.core.domain.usecase.chat
 
 import android.content.Context
 import android.net.Uri
-import com.cortech.yahapp.core.domain.usecase.chat.GenerateResponseUseCase
 import com.cortech.yahapp.core.utils.Constants
 import com.itextpdf.kernel.pdf.PdfDocument
 import com.itextpdf.kernel.pdf.PdfReader

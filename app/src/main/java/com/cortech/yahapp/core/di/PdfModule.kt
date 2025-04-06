@@ -1,7 +1,7 @@
 package com.cortech.yahapp.core.di
 
-import com.cortech.yahapp.core.domain.usecase.AnalyzePdfUseCase
-import com.cortech.yahapp.core.domain.usecase.ImproveResumeUseCase
+import com.cortech.yahapp.core.domain.usecase.chat.AnalyzePdfUseCase
+import com.cortech.yahapp.core.domain.usecase.chat.ImproveResumeUseCase
 import com.cortech.yahapp.core.domain.usecase.chat.GenerateResponseUseCase
 import dagger.Module
 import dagger.Provides

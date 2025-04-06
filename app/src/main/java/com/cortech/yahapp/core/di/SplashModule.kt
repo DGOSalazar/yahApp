@@ -1,8 +1,8 @@
 package com.cortech.yahapp.features.splash.di
 
 import com.cortech.yahapp.core.data.local.UserPreferences
-import com.cortech.yahapp.core.data.repository.WizelineRepository
-import com.cortech.yahapp.core.domain.usecase.CheckUserSessionUseCase
+import com.cortech.yahapp.core.data.repository.AuthRepository
+import com.cortech.yahapp.core.domain.usecase.auth.CheckUserSessionUseCase
 import com.cortech.yahapp.core.domain.usecase.auth.GetWizelineAssetsUseCase
 import dagger.Module
 import dagger.Provides
@@ -25,7 +25,7 @@ object SplashModule {
     @Provides
     @ViewModelScoped
     fun provideGetWizelineAssetsUseCase(
-        repository: WizelineRepository
+        repository: AuthRepository
     ): GetWizelineAssetsUseCase {
         return GetWizelineAssetsUseCase(repository)
     }

@@ -36,6 +36,7 @@ object Constants {
             const val WELCOME_MESSAGE = "Welcome to YahApp!, What can i help you with, %s?"
             const val FIND_COMMAND = "/find"
             const val JOB_COMMAND = "/job"
+            const val FILE_COMMAND = "/file"
             const val FIND_EMPLOYEES_ERROR = "Failed to find employees"
             const val GENERATE_RESPONSE_ERROR = "Failed to generate response"
             const val JOB_DETAILS_REQUIRED = "Please provide job details after /job"
@@ -81,6 +82,36 @@ object Constants {
     }
     const val GEMINI_MODEL_NAME = "gemini-2.0-flash"
     const val EMPTY_RESPONSE_ERROR = "Empty response from Gemini"
+    
+    object GeminiPrompt {
+        const val SYSTEM_ROLE = "You are a specialized HR and professional development assistant. Your goal is to help two types of users:"
+        
+        object WorkerSupport {
+            const val HEADER = "1. Workers and candidates:"
+            const val IMPROVE_CV = "- Help them improve their CVs and professional profiles"
+            const val SHOW_JOBS = "- Show them relevant job positions based on their experience"
+            const val CAREER_GUIDANCE = "- Guide them in their professional development"
+            const val APPLICATION_HELP = "- Assist them in the job application process"
+            const val SAVE_CV = "- Allow them to save their CVs in the database"
+        }
+        
+        object HrSupport {
+            const val HEADER = "2. HR Personnel:"
+            const val MANAGE_JOBS = "- Help them publish and manage job positions"
+            const val FIND_CANDIDATES = "- Find candidates that match their positions"
+            const val REVIEW_PROFILES = "- Review and evaluate candidate profiles"
+            const val OPTIMIZE_DESCRIPTIONS = "- Optimize job descriptions"
+        }
+        
+        object Guidelines {
+            const val HEADER = "Guidelines:"
+            const val BE_PROFESSIONAL = "- Be professional and empathetic"
+            const val PRACTICAL_ADVICE = "- Give practical and actionable advice"
+            const val POSITIVE_TONE = "- Maintain a positive and constructive tone"
+            const val CONFIDENTIALITY = "- Respect information confidentiality"
+            const val QUALITY_FOCUS = "- Prioritize quality over quantity in responses"
+        }
+    }
     
     object Api {
         const val USERS_ENDPOINT = "users/"

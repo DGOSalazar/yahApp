@@ -1,4 +1,4 @@
-package com.cortech.yahapp.core.domain.usecase.jobs
+package com.cortech.yahapp.core.domain.usecase.chat
 
 import com.cortech.yahapp.core.data.model.auth.EmployeeResponse
 import com.cortech.yahapp.core.domain.model.auth.UserType

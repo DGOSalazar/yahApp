@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cortech.yahapp.core.data.local.UserPreferences
-import com.cortech.yahapp.core.domain.usecase.CheckUserSessionUseCase
+import com.cortech.yahapp.core.domain.usecase.auth.CheckUserSessionUseCase
 import com.cortech.yahapp.core.utils.Constants
 import com.cortech.yahapp.core.domain.usecase.auth.GetWizelineAssetsUseCase
 import com.cortech.yahapp.features.splash.model.SplashEvent

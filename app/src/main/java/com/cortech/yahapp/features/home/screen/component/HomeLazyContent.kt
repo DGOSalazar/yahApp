@@ -48,7 +48,7 @@ fun HomeLazyContent(
 
 @Preview
 @Composable
-fun HomeLazyContentPreview() {
+private fun HomeLazyContentPreview() {
     HomeLazyContent(
         message = ChatMessage(
             messageType = MessageType.Question,

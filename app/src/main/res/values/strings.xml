@@ -16,6 +16,7 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="name">Name</string>
+    <string name="user_name">User Name</string>
     <string name="last_name">Last Name</string>
     <string name="birthdate">Birthdate</string>
     <string name="description">Description</string>
@@ -39,4 +40,10 @@
     <string name="improve_cv_decline">No, thanks</string>
     <string name="improved_cv_ready">I\'ve created an improved version of your CV!</string>
     <string name="upload_improved_cv">Would you like to upload it now?</string>
+    <string name="error_loading_profile">error_loading_profile</string>
+    <string name="personal_info">Personal Information</string>
+    <string name="account_info">Account Info</string>
+    <string name="email">Email</string>
+    <string name="profile_title">Profile</string>
+    <string name="retry">Retry</string>
 </resources>
