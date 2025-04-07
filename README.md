@@ -28,37 +28,77 @@ YahApp is a comprehensive Android application designed to revolutionize the job 
 com.cortech.yahapp/
 ├── core/                          # Core functionality shared across features
 │   ├── data/                      # Data layer implementation
-│   │   ├── api/                   # API interfaces for network calls
-│   │   │   ├── auth/             # Authentication APIs
-│   │   │   ├── chat/             # Chat & AI APIs
-│   │   │   ├── jobs/             # Job-related APIs
-│   │   │   └── profile/          # User profile APIs
-│   │   ├── local/                # Local storage (SharedPreferences)
-│   │   ├── model/                # Data models
-│   │   └── repository/           # Repository implementations
-│   ├── domain/                   # Business logic & use cases
-│   │   ├── model/                # Domain models
-│   │   ├── repository/           # Repository interfaces
-│   │   └── usecase/             # Use cases for business logic
-│   └── presentation/             # UI components & themes
-└── features/                     # Feature modules
-    ├── home/                     # Home feature (Chat, Jobs)
-    ├── profile/                  # User profile management
-    ├── register/                 # User registration
-    └── splash/                   # App initialization
+│   │   ├── api/                   # API interfaces and services
+│   │   ├── local/                 # Local storage implementations
+│   │   ├── model/                 # Data models and DTOs
+│   │   │   ├── auth/              # Authentication models
+│   │   │   └── recommendation/    # Recommendation models
+│   │   └── repository/            # Repository implementations
+│   ├── di/                        # Dependency injection modules
+│   ├── domain/                    # Business logic & use cases
+│   │   ├── model/                 # Domain models
+│   │   │   ├── auth/              # Authentication domain models
+│   │   │   └── chat/              # Chat domain models
+│   │   ├── repository/            # Repository interfaces
+│   │   └── usecase/               # Use cases by feature
+│   │       ├── auth/              # Authentication use cases
+│   │       ├── chat/              # Chat use cases
+│   │       └── profile/           # Profile use cases
+│   ├── navigation/                # Navigation components
+│   ├── presentation/              # Shared UI components
+│   │   ├── components/            # Reusable composables
+│   │   └── theme/                 # App theming
+│   └── utils/                     # Utility classes
+└── features/                      # Feature modules
+    ├── home/                      # Home feature
+    │   ├── model/                 # Feature-specific models
+    │   │   └── state/             # UI state management
+    │   ├── screen/                # UI screens
+    │   │   └── component/         # Screen-specific components
+    │   └── viewmodel/             # ViewModels
+    ├── profile/                   # Profile management
+    │   ├── model/                 # Profile models
+    │   ├── view/                  # Profile UI
+    │   │   └── component/         # Profile components
+    │   └── viewmodel/             # Profile ViewModels
+    ├── register/                  # User registration
+    │   ├── model/                 # Registration models
+    │   ├── view/                  # Registration UI
+    │   └── viewmodel/             # Registration ViewModels
+    └── splash/                    # App initialization
+        ├── model/                 # Splash models
+        ├── view/                  # Splash screen
+        └── viewmodel/             # Splash ViewModels
 ```
 
 ### Architecture Flow Diagram
 
 ```mermaid
 graph TD
-    UI[UI Layer] --> |User Actions| VM[ViewModels]
-    VM --> |Execute| UC[Use Cases]
-    UC --> |Abstract| R[Repositories]
-    R --> |Concrete| RI[Repository Impl]
-    RI --> |Remote| API[API Service]
-    RI --> |Local| LS[Local Storage]
-    API --> |Network| BE[Backend Services]
+    subgraph Presentation Layer
+        UI[UI Components] --> |State & Events| VM[ViewModels]
+        VM --> |UI State| UI
+    end
+    
+    subgraph Domain Layer
+        VM --> |Execute| UC[Use Cases]
+        UC --> |Domain Models| VM
+        UC --> |Repository Interface| R[Repositories]
+    end
+    
+    subgraph Data Layer
+        R --> |Implementation| RI[Repository Impl]
+        RI --> |DTOs| API[API Service]
+        RI --> |Local Data| LS[Local Storage]
+        API --> |Network| BE[Backend Services]
+        BE --> |Response| API
+        API --> |Mapped Models| RI
+        LS --> |Cached Data| RI
+    end
+    
+    style Presentation Layer fill:#e1f5fe,stroke:#01579b
+    style Domain Layer fill:#f3e5f5,stroke:#4a148c
+    style Data Layer fill:#e8f5e9,stroke:#1b5e20
 ```
 </details>
 
