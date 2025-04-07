@@ -17,7 +17,46 @@ You can download the latest version of YahApp from our [Releases](https://github
 
 ## Overview 📱
 
-YahApp is a comprehensive Android application designed to revolutionize the job search experience by leveraging modern technologies and AI capabilities. Built with Clean Architecture principles and the latest Android development practices.
+YahApp is a cutting-edge Android application designed to revolutionize the recruitment process by seamlessly connecting recruiters with talent. Powered by Google's Gemini AI, which has been specially trained as an HR expert, the platform offers an intelligent and efficient matching system.
+
+### 🎯 Problem Solving
+
+- **Eliminates Unnecessary Profile Reviews**: AI-powered pre-screening saves recruiters valuable time
+- **Efficient Matching Process**: Gemini AI analyzes and matches candidates based on comprehensive criteria
+- **Career Development**: Provides personalized recommendations for CV improvement and skill development
+
+### 👥 For Recruiters
+
+- Quick registration process
+- Access to a curated pool of pre-screened developers
+- AI-powered candidate matching based on your requirements
+- Detailed candidate profiles with skill analysis
+- Direct access to verified professional information
+
+### 🚀 For Job Seekers
+
+- Smart profile visibility to relevant recruiters
+- Upload your CV for AI-powered analysis
+- Receive personalized career advice
+- Get expert recommendations for CV improvement
+- Access to an HR expert through AI chat interface
+
+### 🔮 Upcoming Features
+
+1. **Enhanced Job Marketplace**
+   - Recruiters can post job opportunities
+   - Job seekers can browse and apply to positions
+   - AI-powered job recommendations
+
+2. **Smart Notifications**
+   - Instant alerts when recruiters show interest
+   - Match notifications based on new job postings
+   - Application status updates
+
+3. **In-App Communication**
+   - Built-in chat system for direct communication
+   - Discussion of terms and next steps
+   - Document sharing capabilities
 
 <details>
 <summary>🏗️ Architecture</summary>
