@@ -1,4 +1,4 @@
-package com.cortech.yahapp.core.domain.model
+package com.cortech.yahapp.core.domain.model.auth
 
 class SplashModel(
     val logo: String,
