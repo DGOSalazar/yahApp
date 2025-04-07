@@ -2,6 +2,9 @@ package com.cortech.yahapp.core.di
 
 import android.content.Context
 import com.cortech.yahapp.core.data.local.UserPreferences
+import com.cortech.yahapp.core.domain.usecase.chat.AnalyzeResumeUseCase
+import com.cortech.yahapp.core.domain.usecase.chat.GenerateResponseUseCase
+import com.cortech.yahapp.core.domain.usecase.chat.ImproveResumeUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,4 +23,16 @@ object LocalModule {
     ): UserPreferences {
         return UserPreferences(context)
     }
+
+    @Provides
+    @Singleton
+    fun provideAnalyzePdfUseCase(
+        generateResponseUseCase: GenerateResponseUseCase
+    ): AnalyzeResumeUseCase = AnalyzeResumeUseCase(generateResponseUseCase)
+
+    @Provides
+    @Singleton
+    fun provideImproveResumeUseCase(
+        generateResponseUseCase: GenerateResponseUseCase
+    ): ImproveResumeUseCase = ImproveResumeUseCase(generateResponseUseCase)
 }

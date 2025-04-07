@@ -1,4 +1,4 @@
-package com.cortech.yahapp.core.data.model.chat.model
+package com.cortech.yahapp.core.domain.model.chat
 
 data class ChatModelConfig(
     val showCopyButton: Boolean = true,

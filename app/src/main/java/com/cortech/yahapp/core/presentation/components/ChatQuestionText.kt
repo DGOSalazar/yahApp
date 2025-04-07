@@ -3,7 +3,6 @@ package com.cortech.yahapp.core.presentation.components
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
-import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,7 +15,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -36,7 +34,6 @@ fun ChatQuestionText(
                 .fillMaxWidth(0.85f)
                 .align(Alignment.CenterEnd)
         ) {
-            // User Badge
             Row(
                 modifier = Modifier
                     .padding(bottom = 8.dp)
@@ -47,12 +44,6 @@ fun ChatQuestionText(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.End
             ) {
-                Text(
-                    text = "Tú",
-                    style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.tertiary,
-                    fontWeight = FontWeight.Medium
-                )
                 Icon(
                     imageVector = Icons.Default.Person,
                     contentDescription = null,

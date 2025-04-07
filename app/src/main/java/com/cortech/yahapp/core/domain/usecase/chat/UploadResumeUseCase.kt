@@ -2,7 +2,7 @@ package com.cortech.yahapp.core.domain.usecase.chat
 
 import android.content.Context
 import android.net.Uri
-import com.cortech.yahapp.core.domain.repository.chat.HomeRepository
+import com.cortech.yahapp.core.domain.repository.HomeRepository
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -10,16 +10,16 @@ import java.io.File
 import java.io.FileOutputStream
 import javax.inject.Inject
 
-class UploadCvUseCase @Inject constructor(
+class UploadResumeUseCase @Inject constructor(
     private val repository: HomeRepository
 ) {
-    suspend operator fun invoke(context: Context, uri: Uri, userName: String): Result<Unit> {
+    suspend operator fun invoke(context: Context, uri: Uri): Result<Unit> {
         return try {
             val file = createTempFileFromUri(context, uri)
             val requestFile = file.asRequestBody("application/pdf".toMediaTypeOrNull())
             val filePart = MultipartBody.Part.createFormData("file", file.name, requestFile)
             
-            repository.uploadCv(filePart, userName)
+            repository.uploadCv(filePart)
         } catch (e: Exception) {
             Result.failure(e)
         }

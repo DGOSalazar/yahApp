@@ -8,7 +8,7 @@ import com.itextpdf.kernel.pdf.PdfReader
 import com.itextpdf.kernel.pdf.canvas.parser.PdfTextExtractor
 import javax.inject.Inject
 
-class AnalyzePdfUseCase @Inject constructor(
+class AnalyzeResumeUseCase @Inject constructor(
     private val generateResponseUseCase: GenerateResponseUseCase
 ) {
     suspend operator fun invoke(context: Context, uri: Uri): Result<String> {

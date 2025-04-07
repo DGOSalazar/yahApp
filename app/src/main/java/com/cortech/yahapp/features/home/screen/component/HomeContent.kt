@@ -15,7 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.cortech.yahapp.R
-import com.cortech.yahapp.core.domain.model.auth.PdfAction
+import com.cortech.yahapp.core.domain.model.chat.PdfAction
 import com.cortech.yahapp.core.presentation.components.BouncingDotsLoader
 import com.cortech.yahapp.core.presentation.components.ChatInputField
 import com.cortech.yahapp.core.presentation.components.PdfOptions

@@ -6,7 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.cortech.yahapp.core.data.model.chat.ChatMessage
+import com.cortech.yahapp.core.domain.model.chat.ChatMessage
+import com.cortech.yahapp.core.presentation.components.CandidateProfile
 import com.cortech.yahapp.core.presentation.components.ChatAnswerText
 import com.cortech.yahapp.core.presentation.components.ChatQuestionText
 import com.cortech.yahapp.core.presentation.components.PdfMessage
@@ -28,7 +29,9 @@ fun HomeLazyContent(
             )
         }
         MessageType.CvResponse -> {
-
+            CandidateProfile(
+                candidateModel = message.position
+            )
         }
         MessageType.VacancyResponse -> {
 

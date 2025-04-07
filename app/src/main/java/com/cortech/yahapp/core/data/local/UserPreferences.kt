@@ -53,18 +53,6 @@ class UserPreferences @Inject constructor(
         }
     }
 
-    fun clearUserData() {
-        prefs.edit().apply {
-            remove(KEY_USER_NAME)
-            remove(KEY_USER_TYPE)
-            apply()
-        }
-    }
-
-    fun isUserLoggedIn(): Boolean {
-        return getUserData() != null
-    }
-
     companion object {
         private const val PREFS_NAME = "yah_app_preferences"
         private const val KEY_USER_NAME = "user_name"

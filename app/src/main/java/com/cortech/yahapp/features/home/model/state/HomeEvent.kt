@@ -2,7 +2,7 @@ package com.cortech.yahapp.features.home.model.state
 
 import android.content.Context
 import android.net.Uri
-import com.cortech.yahapp.core.domain.model.auth.PdfAction
+import com.cortech.yahapp.core.domain.model.chat.PdfAction
 
 sealed class HomeEvent {
     data class SendMessage(val message: String) : HomeEvent()

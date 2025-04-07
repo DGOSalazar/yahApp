@@ -1,13 +1,13 @@
 package com.cortech.yahapp.core.domain.usecase.auth
 
 import com.cortech.yahapp.core.data.local.UserPreferences
-import com.cortech.yahapp.core.data.repository.AuthRepository
+import com.cortech.yahapp.core.data.repository.WizelineRepositoryImpl
 import com.cortech.yahapp.core.domain.model.auth.UserData
 import com.cortech.yahapp.core.domain.model.auth.UserType
 import javax.inject.Inject
 
 class LoginUserUseCase @Inject constructor(
-    private val repository: AuthRepository,
+    private val repository: WizelineRepositoryImpl,
     private val userPreferences: UserPreferences
 ) {
     suspend operator fun invoke(name: String, password: String): Result<Unit> {
